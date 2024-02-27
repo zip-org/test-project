@@ -15,6 +15,7 @@ class CfnSagemakerStack(Stack):
 
 class MyClass:
     def __bool__(self):
+        i = 1
         return 0 # Noncompliant: Return value of type bool here.
 
 obj1 = MyClass()
