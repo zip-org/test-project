@@ -17,6 +17,7 @@ class MyClass:
     def __bool__(self):
         return 0 # Noncompliant: Return value of type bool here.
         return 1
+        return 2
 
 obj1 = MyClass()
 print(bool(obj1)) # TypeError: __bool__ should return bool, returned int
