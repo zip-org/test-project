@@ -28,12 +28,12 @@
 
 name: SonarCloud analysis
 
-on:
-  push:
-    branches: [ "master", "branch-*" ]
-  pull_request:
-    branches: [ "master" ]
-  workflow_dispatch:
+# on:
+#   push:
+#     branches: [ "master", "branch-*" ]
+#   pull_request:
+#     branches: [ "master" ]
+#   workflow_dispatch:
 
 permissions:
   pull-requests: read # allows SonarCloud to decorate PRs with analysis results
@@ -51,7 +51,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # Generate a token on Sonarcloud.io, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
-          SONARCLOUD_URL: "https://sc-staging.io"
+          # SONARCLOUD_URL: "https://sc-staging.io"
         with:
           # Additional arguments for the sonarcloud scanner
           args:
