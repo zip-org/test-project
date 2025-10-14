@@ -15,6 +15,7 @@ class MyClass:
         i = 1
         j = 2
         j = 3
+        j = 34
         return 0  # Noncompliant: Return value of type bool here.
 
 
