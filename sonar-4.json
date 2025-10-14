@@ -1,0 +1,135 @@
+{
+  "rules": [
+    {
+      "id": "IfStmtsMustUseBraces",
+      "name": "IfStmtsMustUseBraces",
+      "description": "Avoid using if statements without using braces to surround the code block. If the code formatting or indentation is lost then it becomes difficult to separate the code being controlled from the rest.<p>Reference: <a href=\"https://docs.pmd-code.org/pmd-doc-7.13.0/pmd_rules_apex_codestyle.html#ifstmtsmustusebraces\" target=\"_blank\">PMD website</a></p>",
+      "engineId": "pmd",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "id": "ApexUnitTestClassShouldHaveRunAs",
+      "name": "ApexUnitTestClassShouldHaveRunAs",
+      "description": "Apex unit tests should include at least one runAs method. This makes the tests more robust, and independent from the user running it.<p>Reference: <a href=\"https://docs.pmd-code.org/pmd-doc-7.13.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas\" target=\"_blank\">PMD website</a></p>",
+      "engineId": "pmd",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ]
+    },
+    {
+      "id": "ApexDoc",
+      "name": "ApexDoc",
+      "description": "This rule validates that: * ApexDoc comments are present for classes, methods, and properties that are public or global, excluding overrides and test classes (as well as the contents of test classes). * ApexDoc comments are present for classes, methods, and properties that are protected or private, depending on the properties `reportPrivate` and `reportProtected`. * ApexDoc comments should contain... Learn more: https://docs.pmd-code.org/pmd-doc-7.13.0/pmd_rules_apex_documentation.html#apexdoc",
+      "engineId": "pmd",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ]
+    },
+    {
+      "id": "NoTrailingWhitespace",
+      "name": "NoTrailingWhitespace",
+      "description": "Detects trailing whitespace (tabs or spaces) at the end of lines of code and lines that are only whitespace.",
+      "engineId": "regex",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ]
+    },
+    {
+      "id": "AvoidOldSalesforceApiVersions",
+      "name": "AvoidOldSalesforceApiVersions",
+      "description": "Detects usages of Salesforce API versions that are 3 or more years old.",
+      "engineId": "regex",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "HIGH"
+        }
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "ruleId": "AvoidOldSalesforceApiVersions",
+      "primaryLocation": {
+        "filePath": "hotspot.py",
+        "message": "Found the use of a Salesforce API version that is 3 or more years old. Avoid using an API version that is <= 55.0.",
+        "textRange": {
+          "startLine": 3,
+          "startColumn": 1,
+          "endLine": 3
+        }
+      }
+    },
+    {
+      "ruleId": "NoTrailingWhitespace",
+      "primaryLocation": {
+        "filePath": "hotspot.py",
+        "message": "Found trailing whitespace at the end of a line of code.",
+        "textRange": {
+          "startLine": 21,
+          "startColumn": 1,
+          "endLine": 21,
+          "endColumn": 4
+        }
+      }
+    },
+    {
+      "ruleId": "ApexDoc",
+      "primaryLocation": {
+        "filePath": "hotspot.py",
+        "message": "Missing ApexDoc comment",
+        "textRange": {
+          "startLine": 6,
+          "startColumn": 1,
+          "endLine": 6,
+          "endColumn": 10
+        }
+      },
+      "message": "Missing ApexDoc comment"
+    },
+    {
+      "ruleId": "ApexUnitTestClassShouldHaveRunAs",
+      "primaryLocation": {
+        "filePath": "hotspot.py",
+        "message": "Apex unit test classes should have at least one System.runAs() call",
+        "textRange": {
+          "startLine": 22,
+          "startColumn": 1,
+          "endLine": 22,
+          "endColumn": 5
+        }
+      }
+    },
+    {
+      "ruleId": "IfStmtsMustUseBraces",
+      "primaryLocation": {
+        "filePath": "hotspot.py",
+        "message": "Avoid using if statements without curly braces",
+        "textRange": {
+          "startLine": 5,
+          "startColumn": 1,
+          "endLine": 5
+        }
+      }
+    }
+  ]
+}
