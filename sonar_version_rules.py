@@ -5,6 +5,7 @@ This file contains code that violates SonarQube Python rules from different vers
 3. S7508 - Redundant PySpark collection functions (version 2025.5+)
 """
 
+
 # =============================================================================
 # Rule S1481: Unused local variables should be removed
 # Introduced: Before version 9.9 (available since SonarQube 9.1+)
@@ -27,16 +28,18 @@ def example_unused_variables():
 # =============================================================================
 import boto3
 
+
 def create_aws_client_with_hardcoded_region():
     """This function violates S6262 by hardcoding AWS region"""
     # Noncompliant: S6262 - hardcoded AWS region
-    client = boto3.client('s3', region_name='us-east-1')
+    client = boto3.client("s3", region_name="us-east-1")
     return client
+
 
 def another_hardcoded_region_example():
     """Another example of S6262 violation"""
     # Noncompliant: S6262 - hardcoded AWS region
-    dynamodb = boto3.resource('dynamodb', region_name='eu-west-1')
+    dynamodb = boto3.resource("dynamodb", region_name="eu-west-1")
     return dynamodb
 
 
@@ -47,6 +50,7 @@ def another_hardcoded_region_example():
 # Description: Unnecessary collection calls within other collection functions
 # =============================================================================
 from pyspark.sql import SparkSession
+
 
 def pyspark_redundant_operations():
     """This function violates S7508 with redundant PySpark collection operations"""
@@ -69,5 +73,7 @@ def pyspark_redundant_operations():
 if __name__ == "__main__":
     print("Running examples with SonarQube rule violations...")
     example_unused_variables()
+    i = 0
+    i = 323
     create_aws_client_with_hardcoded_region()
     pyspark_redundant_operations()
