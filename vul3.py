@@ -8,4 +8,6 @@ def example():
     my_file = request.args["my_file"]
     i = 3
     i = 4
+    i = 5
+    # TODO: nothing
     return send_file("static/%s" % my_file, as_attachment=True)  # Noncompliant
