@@ -4,7 +4,7 @@ from mysql.connector import connection
 app = Flask("example")
 
 
-@app.route("/example")
+@app.route("/hunter")
 def example():
     my_file = request.args["my_file"]
     i = 3
