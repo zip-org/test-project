@@ -1,40 +1,24 @@
-from flask import Flask, g, jsonify, request
+import jwt
+from flask import Flask, request, send_from_directory
 
-app = Flask(__name__)
-
-# Mock database of invoices
-INVOICES_DB = {
-    "101": {"owner_id": "user_alice", "amount": 1500.00, "status": "Pending"},
-    "102": {"owner_id": "user_bob", "amount": 45.00, "status": "Paid"},
-}
+app = Flask("example")
 
 
-@app.before_request
-def mock_authentication():
-    # Simulate that Bob is logged in
-    g.current_user_id = "user_bob"
+@app.route("/hunter-agent")
+def example():
+    my_file = request.args["my_file"]
+    i = 3
+    i = 4
+    i = 5
+    i = 6
+    i = 7
+    return send_file("static/%s" % my_file, as_attachment=True)  # Noncompliant
 
 
-### VULNERABLE ROUTE (IDOR on Update) ###
-@app.route("/api/v1/invoice/update", methods=["POST"])
-def update_invoice():
-    """
-    VULNERABILITY: The app trusts the 'invoice_id' provided by the client
-    and updates the database without verifying if the logged-in user
-    actually owns that invoice.
-    """
-    data = request.get_json()
-    invoice_id = data.get("invoice_id")
-    new_amount = data.get("amount")
-
-    invoice = INVOICES_DB.get(invoice_id)
-    if not invoice:
-        return jsonify({"error": "Invoice not found"}), 404
-
-    # IDOR: Modifying the resource blindly based on the ID provided
-    invoice["amount"] = new_amount
-    return jsonify({"message": f"Invoice {invoice_id} updated successfully!"}), 200
+def add_to_list(item, my_list=[]):
+    my_list.append(item)
+    return my_list
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+print(add_to_list(1))  # Output: [1]
+print(add_to_list(2))
