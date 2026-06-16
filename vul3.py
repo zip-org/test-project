@@ -1,5 +1,8 @@
+import jwt
 from flask import Flask, request, send_from_directory
 from mysql.connector import connection
+
+jwt.decode(token, options={"verify_signature": False})  # Noncompliant
 
 connection.MySQLConnection(host="localhost", user="sonarsource", password="sonar")
 
