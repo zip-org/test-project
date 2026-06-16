@@ -11,6 +11,7 @@ def example():
     i = 4
     i = 5
     i = 6
+    i = 7
     return send_file("static/%s" % my_file, as_attachment=True)  # Noncompliant
 
 
