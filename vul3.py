@@ -1,6 +1,8 @@
 from flask import Flask, request, send_from_directory
 from mysql.connector import connection
 
+connection.MySQLConnection(host="localhost", user="sonarsource", password="sonar")
+
 app = Flask("example")
 
 
